@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>Title</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contents.each do |content| %>
+      <tr>
+        <td><%= content.project_id %></td>
+        <td><%= content.title %></td>
+        <td><%= content.type %></td>
+        <% if session[:user_id] %>
+        <td><%= link_to 'Show', content %></td>
+        <td><%= link_to 'Edit', edit_content_path(content) %></td>
+        <td><%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Content', new_content_path %>
+
+<% if session[:user_id] != nil %>
+<a href="/projects/">Show Projects List</a>
+<% end %>
+
+<% if session[:user_id] != nil %>
+<a href="/users/">Show User List</a>
+<% end %>
+
+<br>
+<% if session[:user_id] != nil %>
+<a href="/session/destroy">Log out</a>
+<% end %>

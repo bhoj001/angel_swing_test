@@ -1,0 +1,41 @@
+<h1> Login to AngelSwing test </h1>
+<div class="block" id="block-login">
+  <h2>Sign in</h2>
+  <div class="content login">
+    <div class="flash">
+      <% flash.each do |type, message| %>
+        <div class="message notice">
+      <h1>  <b>  <p>
+            <%= message %>
+          </p></b> </h1>
+        </div>
+      <% end %>
+    </div>
+  <%= form_tag do %>
+    <fieldset>
+      <legend>Please Log In</legend>
+      <div class="group wat-cf">
+        <div class="left">
+          <%= label_tag :name, 'Name:' %>
+        </div>
+        <div class="right">
+        <%= text_field_tag :name, params[:name] %>
+        </div>
+      </div>
+      <div class="group wat-cf">
+        <div class="left"><%= label_tag :password, 'Password:' %></div>
+        <div class="right"><%= password_field_tag :password, params[:password] %></div>
+      </div>
+      <div class="group wat-cf">
+        <div class="right"><div class="button"><%= submit_tag "Login" %></div></div>
+      </div>
+
+    </fieldset>
+  <% end %>
+  <!-- <hr> -->
+  <p>If you don't have account please register!</p>
+  <div class="group wat-cf">
+    <div class="right"><a href="/users/new/" class="btn btn-primary" >Register</a> </div>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<h1>Sign Up [Test For angel swing]</h1>
+
+<%= render 'form', user: @user %>
+
+
+
+<%= link_to 'User list', users_path %>
+<%= link_to 'Project list', projects_path %>
+<%= link_to 'Content list', contents_path %>
+
+<% if session[:user_id] == nil %>
+<br>
+<p>If you already have an account then,</p>
+<a href="/login">Login </a>
+<% end %>

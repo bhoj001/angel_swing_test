@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Projects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Thumbnail</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.title %></td>
+        <td><%= project.thumbnail %></td>
+        <td><%= project.description %></td>
+        <% if session[:user_id]   %>
+        <td><%= link_to 'Show', project %></td>
+        <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if session[:user_id] != nil %>
+<%= link_to 'New Project', new_project_path %>
+<% end %>
+
+
+
+<% if session[:user_id] != nil %>
+<a href="/contents/">Show Contents List</a>
+<% end %>
+
+<% if session[:user_id] != nil %>
+<a href="/users/">Show User List</a>
+<% end %>
+
+<br>
+<% if session[:user_id] != nil %>
+<a href="/session/destroy">Log out</a>
+<% end %>
